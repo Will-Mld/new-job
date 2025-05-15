@@ -21,6 +21,7 @@ public class IpCounter {
     public long countUniqueIp (String fileName) {
         Path path = Path.of(fileName);
         try (var lines = Files.lines(path)){
+            System.out.println("start work with file - "+fileName);
             return lines.mapToInt(converter)
                     .collect(supplier, IntContainer::add, IntContainer::addAll)
                     .countUnique();
